@@ -1,20 +1,15 @@
-/* reset */
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: normal;
 }
 
 * {
   margin: 0;
   padding: 0;
   font: inherit;
-}
-
-ul[role=list],
-ol[role=list] {
-  list-style: none;
 }
 
 html:focus-within {
@@ -29,6 +24,7 @@ body {
 body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  background: linear-gradient(to right, #00AAFF, #00FF6C);
 }
 
 img,
@@ -38,33 +34,49 @@ svg {
   display: block;
 }
 
-/* reset end */
-
-.main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.calculator-grid {
+  display: grid;
   justify-content: center;
-  min-height: 600px;
-  min-width: 600px;
+  align-content: center;
+  min-height: 100vh;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(120px, auto) repeat(5, 100px);
 }
 
-.button-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 5px;
+.calculator-grid > button {
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid white;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.calculator-grid > button:hover {
+  background-color: rgba(255, 255, 255, 0.90);
 }
 
 .span-two {
   grid-column: span 2;
 }
 
-.btn {
-  height: 80px;
-  min-width: 80px;
-  font-size: 30px;
+.output {
+  grid-column: 1 / -1;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: 10px;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
-.upper-screen {
-  
+.output .upper-screen {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 2.5rem;
+}
+
+.output .lower-screen {
+  color: rgba(255, 255, 255, 1.00);
+  font-size: 2.5rem;
 }
