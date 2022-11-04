@@ -17,13 +17,13 @@ class Calculator {
   }
 
   appendNumber(number) {
-    if (number === "," && this.currentOperand.includes(",")) return;
+    if (number === "." && this.currentOperand.includes(".")) return;
     this.currentOperand = this.currentOperand.toString() + number.toString();
   }
 
   chooseOperation(operation) {
     if (this.currentOperand === "") return;
-    if (this.previousOperand ==! "") {
+    if (this.previousOperand !== "") {
       this.compute();
     }
     this.operation = operation;
@@ -36,6 +36,24 @@ class Calculator {
     let previous = parseFloat(this.previousOperand);
     let current = parseFloat(this.currentOperand);
     if (isNaN(previous) || isNaN(current)) return;
+    switch (this.operation) {
+      case "+":
+        result = previous + current;
+        break;
+      case "-":
+        result = previous - current;
+        break;
+      case "*":
+        result = previous * current;
+        break;
+      case "/":
+        result = previous / current;
+        break;
+      default: return;
+    }
+    this.currentOperand = result;
+    this.operation = undefined;
+    this.previousOperand = "";
   }
 
   updateDisplay() {
